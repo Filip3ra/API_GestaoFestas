@@ -1,0 +1,24 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.2.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GestaoFestas", "GestaoFestas\GestaoFestas.csproj", "{80F7B709-10BD-511C-D2B9-68076DAE1BC7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{80F7B709-10BD-511C-D2B9-68076DAE1BC7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{80F7B709-10BD-511C-D2B9-68076DAE1BC7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{80F7B709-10BD-511C-D2B9-68076DAE1BC7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{80F7B709-10BD-511C-D2B9-68076DAE1BC7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2F50BE7A-2473-46B3-A669-1625C2AFE7C5}
+	EndGlobalSection
+EndGlobal
