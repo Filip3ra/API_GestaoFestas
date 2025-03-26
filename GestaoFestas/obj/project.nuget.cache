@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "PFLQpx9NOes=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\filip\\OneDrive\\Documentos\\DOTNET\\API_GestaoFestas\\GestaoFestas\\GestaoFestas.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\filip\\.nuget\\packages\\microsoft.aspnetcore.openapi\\9.0.3\\microsoft.aspnetcore.openapi.9.0.3.nupkg.sha512",
+    "C:\\Users\\filip\\.nuget\\packages\\microsoft.openapi\\1.6.17\\microsoft.openapi.1.6.17.nupkg.sha512"
+  ],
+  "logs": []
+}
