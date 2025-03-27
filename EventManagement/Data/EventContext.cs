@@ -1,11 +1,14 @@
 namespace Event.Data;
 
+using Employee.Models;
 using Event.Models;
 using Microsoft.EntityFrameworkCore;
 
 public class EventContext : DbContext
 {
+  // Os nomes representam o nome da tabela no bd
   public DbSet<EventModel> Events { get; set; }
+  public DbSet<EmployeeModel> EmployeeModel { get; set; }
 
   // configura quem é o provider do bd, que será o Sqlite
   protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

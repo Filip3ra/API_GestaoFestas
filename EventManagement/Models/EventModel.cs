@@ -35,6 +35,11 @@ public class EventModel
   public List<string> Services { get; set; }
   public List<EmployeeModel> Employees { get; private set; }
 
+  public void ChangeContractingName(string name)
+  {
+    Contracting = name;
+  }
+
   public void AddService(string service)
   {
     if (!Services.Contains(service)) // Verifica se o serviço já está na lista
