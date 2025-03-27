@@ -1,3 +1,4 @@
+using Employee.Models;
 using Event.Models;
 
 namespace Event.Routes;
@@ -9,6 +10,19 @@ public static class EventRoute
   */
   public static void EventRoutes(this WebApplication app)
   {
-    app.MapGet("event", () => new EventModel("Filipi Party"));
+
+    app.MapGet("event", () =>
+    new EventModel(
+      "Filipi",
+      500,
+      DateTime.Now,
+      new List<string> { "Animação", "Pintura Facial" },
+      new List<EmployeeModel>
+      {
+        new EmployeeModel("Wesley"),
+        new EmployeeModel("Jade")
+      }
+    )    
+    );
   }
 }
