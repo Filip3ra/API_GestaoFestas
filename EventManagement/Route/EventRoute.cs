@@ -11,6 +11,10 @@ public static class EventRoute
   public static void EventRoutes(this WebApplication app)
   {
 
+    var route = app.MapGroup("event");
+
+    route.MapPost("",);
+
     app.MapGet("event", () =>
     new EventModel(
       "Filipi",

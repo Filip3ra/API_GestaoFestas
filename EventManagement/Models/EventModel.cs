@@ -4,6 +4,15 @@ namespace Event.Models;
 
 public class EventModel
 {
+  /* Construtor padrão (sem parâmetros) necessário para o EF Core
+  O EF Core precisa de um construtor sem parâmetros para instanciar o 
+  modelo durante as operações de migração e manipulação de dados.
+  */
+  public EventModel()
+  {
+    Services = new List<string>();
+    Employees = new List<EmployeeModel>();
+  }
 
   public EventModel(string name, decimal price, DateTime date, List<string> services, List<EmployeeModel> employees)
   {
