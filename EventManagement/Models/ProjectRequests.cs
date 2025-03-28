@@ -1,3 +1,12 @@
+/* Esse aqrquivo de requisição é uma camada intermediária entre 
+a API(requisições do usuário) e o modelo de domínio (EventModel)
+
+Facilita validação e transformação antes de salvar no banco.
+
+Separar a estrutura da API da estrutura do banco é boa prática.
+
+*/
+
 using Employee.Models;
 namespace Event.Models;
 
@@ -6,7 +15,7 @@ public record EventRequest(
   decimal Price,
   DateTime Date,
   List<string> Services,
-  List<EmployeeRequest> Employees
+  List<Guid> EmployeesId
 );
 
 public record EmployeeRequest(

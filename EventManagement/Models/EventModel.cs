@@ -40,6 +40,11 @@ public class EventModel
     Contracting = name;
   }
 
+  public void SetInactive()
+  {
+    Contracting = "Desativado";
+  }
+
   public void AddService(string service)
   {
     if (!Services.Contains(service)) // Verifica se o serviço já está na lista

@@ -10,6 +10,17 @@ public class EmployeeModel
 
   /*init : o valor pode ser definido apenas no construtor ou 
   na inicialização do objeto, mas não pode ser alterado depois.*/
-  public Guid Id { get; init; } 
+  public Guid Id { get; init; }
   public string Name { get; private set; }
+
+
+  public void ChangeEmployeeName(string name)
+  {
+    Name = name;
+  }
+
+  public void SetInactive()
+  {
+    Name = "(Desativado)" + Name;
+  }
 }
