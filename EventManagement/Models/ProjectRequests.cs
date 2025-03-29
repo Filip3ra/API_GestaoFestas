@@ -11,11 +11,11 @@ using Employee.Models;
 namespace Event.Models;
 
 public record EventRequest(
-  string Name,
-  decimal Price,
-  DateTime Date,
-  List<string> Services,
-  List<Guid> EmployeesId
+  string? Name,
+  decimal? Price,
+  DateTime? Date,
+  List<string>? Services,
+  List<Guid>? EmployeesId
 );
 
 public record EmployeeRequest(

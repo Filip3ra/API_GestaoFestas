@@ -2,6 +2,7 @@ using Employee.Models;
 using Event.Models;
 using Event.Data;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Http.HttpResults;
 
 namespace Event.Routes;
 
@@ -25,7 +26,7 @@ public static class EventRoute
       {
         List<EmployeeModel> listEmployees = new List<EmployeeModel>();
 
-        if (req.EmployeesId.Any()) // Verifica se a lista de Id não está vazia 
+        if (req.EmployeesId != null && req.EmployeesId.Any()) // Verifica se a lista de Id não está vazia 
         {
           // Contains : busca todos os funcionários cujos Id estão na lista passada
           listEmployees = await context.EmployeeModel
@@ -39,7 +40,12 @@ public static class EventRoute
           }
         }
 
-        var event_ = new EventModel(req.Name, req.Price, req.Date, req.Services, listEmployees);
+        if (req.Name == null || req.Price == null || req.Date == null || req.Services == null)
+        {
+          return Results.BadRequest("Algum campo nulo fornecido.");
+        }
+
+        var event_ = new EventModel(req.Name, req.Price.Value, req.Date.Value, req.Services, listEmployees);
         await context.AddAsync(event_); // Adiciona esse evento no context
         await context.SaveChangesAsync(); // Commit para adicionar de fato no banco de dados
         return Results.Ok($"O evento da {event_.Contracting} foi cadastrado com sucesso.");
@@ -54,7 +60,7 @@ public static class EventRoute
     });
 
     // Edita nome do contratante, mas deveria ser patch
-    route.MapPut("{id:guid}", async (Guid id, EventRequest req, EventContext context) =>
+    /*route.MapPut("{id:guid}", async (Guid id, EventRequest req, EventContext context) =>
     {
       //var event_ = await context.Events.FindAsync(id);
       var event_ = await context.Events.FirstOrDefaultAsync(event_ => event_.Id == id);
@@ -68,9 +74,62 @@ public static class EventRoute
       await context.SaveChangesAsync();
       return Results.Ok(event_);
 
-    });
+    });*/
 
-    // Edita somente os funcionários de um evento
+    route.MapPatch("", async (Guid id, EventRequest req, EventContext context) =>
+    {
+      // Verifica existânci de um evento
+      var event_ = await context.Events.FirstOrDefaultAsync(e => e.Id == id);
+
+      if (event_ == null)
+      {
+        return Results.NotFound();
+      }
+
+      // Se foi fornecido id válido de um funcionário
+      if (req.EmployeesId != null && req.EmployeesId.Any())
+      {
+        var listEmployees = await context.EmployeeModel
+        .Where(e => req.EmployeesId.Contains(e.Id))
+        .ToListAsync();
+
+        // Se a quantidade de funcionários encontrados for diferente da quantidade de ID enviado, algum deles não existe
+        if (listEmployees.Count != req.EmployeesId.Count)
+        {
+          return Results.BadRequest("Um ou mais funcionários informados não existem.");
+        }
+
+        // Pra cada funcionário da lista, adiciona ele ao evento
+        listEmployees.ForEach(employee => event_.AddEmployee(employee));
+      }
+
+      // Só altera se o valor foi passado na requisição
+        if (!string.IsNullOrWhiteSpace(req.Name))
+        {
+          event_.ChangeContractingName(req.Name);
+        }
+
+      // Se Price foi fornecido, altera
+      if (req.Price.HasValue)
+      {
+        event_.Price = req.Price.Value;
+      }
+
+      // Se Date foi fornecido, altera
+      if (req.Date.HasValue)
+      {
+        event_.Date = req.Date.Value;
+      }
+
+      // Verifica se a lista está na requisição e tem algum valor antes de atualizar
+      if (req.Services != null && req.Services.Any())
+      {
+        event_.Services = req.Services;
+      }
+
+      await context.SaveChangesAsync();
+      return Results.Ok(event_);
+    });
 
     // Soft Delete
     route.MapDelete("{id:guid}/soft", async (Guid id, EventContext context) =>

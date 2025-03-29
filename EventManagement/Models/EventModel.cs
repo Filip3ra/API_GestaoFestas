@@ -42,7 +42,7 @@ public class EventModel
 
   public void SetInactive()
   {
-    Contracting = "Desativado";
+    Contracting = "(Inativo)"+Contracting;
   }
 
   public void AddService(string service)
