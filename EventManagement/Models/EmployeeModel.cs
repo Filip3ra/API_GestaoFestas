@@ -21,6 +21,6 @@ public class EmployeeModel
 
   public void SetInactive()
   {
-    Name = "(Desativado)" + Name;
+    Name = "(Inativo)" + Name;
   }
 }

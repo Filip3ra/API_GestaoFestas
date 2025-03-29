@@ -242,7 +242,7 @@ public static class EventRoute
 
       employee_.SetInactive();
       await context.SaveChangesAsync();
-      return Results.Ok($"Funcionário {id} removido com sucesso.");
+      return Results.Ok($"Funcionário(a) {employee_.Name} INATIVADO com sucesso.");
     });
 
     // Hard Delete 
@@ -257,7 +257,7 @@ public static class EventRoute
 
       context.EmployeeModel.Remove(employee_); // Remove funcionário
       await context.SaveChangesAsync();
-      return Results.Ok($"Funcionário {id} removido com sucesso.");
+      return Results.Ok($"Funcionário(a) {employee_.Name} REMOVIDO com sucesso.");
     });
 
   }
