@@ -16,6 +16,16 @@ public class EventContext : DbContext
     optionsBuilder.UseSqlite("Data Source=event.sqlite");
     base.OnConfiguring(optionsBuilder);
   }
+
+  protected override void OnModelCreating(ModelBuilder modelBuilder)
+  {
+    modelBuilder.Entity<EventModel>()
+    .HasMany(e => e.Employees)
+    .WithMany(e => e.Events)
+    .UsingEntity(j => j.ToTable("EventEmployee"));
+  }
+
+
 }
 
 /* 

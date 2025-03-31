@@ -76,6 +76,7 @@ public static class EventRoute
 
     });*/
 
+    // Edita atributos do evento
     route.MapPatch("", async (Guid id, EventRequest req, EventContext context) =>
     {
       // Verifica existânci de um evento
@@ -147,23 +148,54 @@ public static class EventRoute
 
     });
 
-    // Hard Delete (não funciona)
+    // Hard Delete 
     route.MapDelete("{id:guid}/hard", async (Guid id, EventContext context) =>
     {
-      var event_ = await context.Events.FirstOrDefaultAsync(event_ => event_.Id == id);
+      //var event_ = await context.Events.FirstOrDefaultAsync(event_ => event_.Id == id);
+
+      var event_ = await context.Events
+      .Include(e => e.Employees)
+      .FirstOrDefaultAsync(e => e.Id == id);
 
       if (event_ == null)
       {
-        return Results.NotFound();
+        return Results.NotFound($"Evento {id} não encontrado.");
       }
 
-      context.RemoveRange(event_.Employees); // Remove funcionários associados ao evento
-      context.Events.Remove(event_); // Remove o evento
+      event_.Employees.Clear(); // Remove associação de funcionários ao evento
+      await context.SaveChangesAsync(); // Garante remover a associação antes de remover o evento
 
+      context.Events.Remove(event_); // Remove o evento
       await context.SaveChangesAsync();
+
       return Results.Ok($"Evento {id} removido com sucesso.");
     });
 
+    // Remove funcionário de um evento
+    route.MapDelete("{eventId:guid}/employee/{employeeId:guid}", async (Guid eventId, Guid employeeId, EventContext context) =>
+    {
+      // Buscar o evento e incluir a lista de funcionários 
+      var event_ = await context.Events
+      .Include(e => e.Employees.Where(emp => emp.Id == employeeId))
+      .FirstOrDefaultAsync(e => e.Id == eventId);
+
+      if (event_ == null)
+      {
+        return Results.NotFound($"Evento com ID {eventId} não encontrado.");
+      }
+
+      // Se o funcionário não estiver na lista, ele não faz parte do evento
+      var employee = event_.Employees.FirstOrDefault();
+      if (employee == null)
+      {
+        return Results.NotFound($"O funcionário com ID {employeeId} não está associado a este evento.");
+      }
+
+      // Remove a associação
+      event_.Employees.Remove(employee);
+      await context.SaveChangesAsync();
+      return Results.Ok($"Funcionário {employee.Name} foi removido do evento {event_.Contracting} com sucesso.");
+    });
 
 
     //----------------------------------------EMPLOYEE----------------------------------------
@@ -198,6 +230,21 @@ public static class EventRoute
     {
       var employees_ = await context.EmployeeModel.ToListAsync();
       return Results.Ok(employees_);
+    });
+
+    // Get eventos de um funcionário
+    routeEmployee.MapGet("{id:guid}/events", async (Guid id, EventContext context) =>
+    {
+      var employee = await context.EmployeeModel
+      .Include(e => e.Events)
+      .FirstOrDefaultAsync(e => e.Id == id);
+
+      if (employee == null)
+      {
+        return Results.NotFound($"Funcionário com id {id} não encontrado.");
+      }
+
+      return Results.Ok(employee.Events);
     });
 
     // Edita nome funcionário (não pode ter mesmo nome que outro já cadastrado)

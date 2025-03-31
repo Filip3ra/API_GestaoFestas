@@ -1,5 +1,7 @@
 namespace Employee.Models;
 
+using System.Text.Json.Serialization;
+using Event.Models;
 public class EmployeeModel
 {
   public EmployeeModel(string name)
@@ -13,7 +15,8 @@ public class EmployeeModel
   public Guid Id { get; init; }
   public string Name { get; private set; }
 
-
+  [JsonIgnore]
+  public List<EventModel> Events { get; set; } = new();
   public void ChangeEmployeeName(string name)
   {
     Name = name;
