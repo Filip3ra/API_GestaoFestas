@@ -1,11 +1,19 @@
 {
   "Version": 1,
-  "Hash": "Ovi4qY3remJ95JJCyiXD1B275iIdN0TeY+mtoxmu33w=",
+  "Hash": "OF5LCwcpfC6TlC5V86dsaH/7q1M/BKfW1j0nhpeFygw=",
   "Source": "EventManagement",
   "BasePath": "_content/EventManagement",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
-  "DiscoveryPatterns": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "EventManagement\\wwwroot",
+      "Source": "EventManagement",
+      "ContentRoot": "C:\\Users\\filip\\OneDrive\\Documentos\\DOTNET\\API_GestaoFestas\\EventManagement\\wwwroot\\",
+      "BasePath": "_content/EventManagement",
+      "Pattern": "**"
+    }
+  ],
   "Assets": []
 }

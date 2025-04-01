@@ -133,3 +133,6 @@ C:\Users\filip\OneDrive\Documentos\DOTNET\API_GestaoFestas\EventManagement\bin\D
 C:\Users\filip\OneDrive\Documentos\DOTNET\API_GestaoFestas\EventManagement\bin\Debug\net8.0\runtimes\win-arm64\native\e_sqlite3.dll
 C:\Users\filip\OneDrive\Documentos\DOTNET\API_GestaoFestas\EventManagement\bin\Debug\net8.0\runtimes\win-x64\native\e_sqlite3.dll
 C:\Users\filip\OneDrive\Documentos\DOTNET\API_GestaoFestas\EventManagement\bin\Debug\net8.0\runtimes\win-x86\native\e_sqlite3.dll
+C:\Users\filip\OneDrive\Documentos\DOTNET\API_GestaoFestas\EventManagement\bin\Debug\net8.0\EventManagement.staticwebassets.runtime.json
+C:\Users\filip\OneDrive\Documentos\DOTNET\API_GestaoFestas\EventManagement\obj\Debug\net8.0\EventManagement.RazorAssemblyInfo.cache
+C:\Users\filip\OneDrive\Documentos\DOTNET\API_GestaoFestas\EventManagement\obj\Debug\net8.0\EventManagement.RazorAssemblyInfo.cs

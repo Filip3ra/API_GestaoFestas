@@ -6,6 +6,10 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
+
+builder.Services.AddRazorPages();
+builder.Services.AddHttpClient();
+
 builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<EventContext>(); //injeta no container, minha conexão com bd
 
@@ -21,4 +25,12 @@ if (app.Environment.IsDevelopment())
 app.EventRoutes();
 
 app.UseHttpsRedirection();
+
+// Razor pages
+app.UseStaticFiles();
+app.UseRouting();
+app.UseAuthorization();
+app.MapRazorPages();
+
+
 app.Run();
