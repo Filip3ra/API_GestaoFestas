@@ -8,7 +8,8 @@ namespace Event.Routes;
 
 public static class EventRoute
 {
-  /* this : extension method, uso a própria instância como método de extensão.
+  /* 
+    this : extension method, uso a própria instância como método de extensão.
     onde tenho um método base e extendo ele a outros recursos e métodos.
 
     async : Sempre que mexer em banco de dados tem que ser assíncrono,
@@ -59,7 +60,7 @@ public static class EventRoute
       return Results.Ok(events_);
     });
 
-    // Edita nome do contratante, mas deveria ser patch
+    // Edita evento 
     /*route.MapPut("{id:guid}", async (Guid id, EventRequest req, EventContext context) =>
     {
       //var event_ = await context.Events.FindAsync(id);
@@ -197,7 +198,6 @@ public static class EventRoute
       return Results.Ok($"Funcionário {employee.Name} foi removido do evento {event_.Contracting} com sucesso.");
     });
 
-
     //----------------------------------------EMPLOYEE----------------------------------------
 
     var routeEmployee = app.MapGroup("employee");
@@ -309,32 +309,3 @@ public static class EventRoute
 
   }
 }
-
-/*
-              PARA MEDIR PERFORMANCE NO FUTURO
-
-              FirstOrDefaultAsync("expressão") : O EF realiza uma consulta no bd e verifica se existe
-              algum registro na tabela "EmployeeModel" que atenda a condição da "expressão".      
-
-
-              var existingEmployee = await context.EmployeeModel.
-              FirstOrDefaultAsync(existingEmployee => existingEmployee.Name == req.Name && existingEmployee.Id != id);
-
-              if (existingEmployee != null)
-              {
-                return Results.BadRequest("Já existe um funcionário com esse nome.");
-              }
-
-              var employee_ = await context.EmployeeModel.FirstOrDefaultAsync(employee_ => employee_.Id == id);
-
-              if (employee_ == null)
-              {
-                return Results.NotFound();
-              }
-
-              employee_.ChangeEmployeeName(req.Name);
-              await context.SaveChangesAsync();
-              return Results.Ok(employee_);
-
-
-        */

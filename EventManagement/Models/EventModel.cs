@@ -1,5 +1,4 @@
 using Employee.Models;
-
 namespace Event.Models;
 
 public class EventModel
@@ -69,16 +68,10 @@ public class EventModel
   }
 }
 
-  /* Guid: identificador global exclusivo, inteiro de 128 bits (16bytes)
+  /* 
+  Guid: identificador global exclusivo, inteiro de 128 bits (16bytes)
   identificador único pra criar Id. Toda vez que executa ele gera um id novo.
 
-  "string?" :  a ? é um marcador de nulo, pra avisar que a variável pode ser nula.
-  Mas também posso resolver isso colocando " = String.Empty;" ao final.
-  Ou, se tenho um construtor eu não preciso de marcador nulo, pois já tenho inicialização que é o construtor.
-
-  init : Vai funcionar somente quando tiver construtor, só posso alterar ele uma vez.
-
-  private : a única parte da aplicação responsável por cuidar das propriedades
+  private : A única parte da aplicação responsável por cuidar das propriedades
   que estão no modelo é o próprio modelo.
-
   */
