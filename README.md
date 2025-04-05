@@ -27,17 +27,20 @@ Ao criar o arquico EventContext.cs é preciso instalar e adicionar pacotes:
 
 E dentro da pasta do projeto é precio adicionar os pacotes:
   > "dotnet add package Microsoft.EntityFrameworkCore --version 8.*"
+
   > "dotnet add package Microsoft.EntityFrameworkCore.Design --version 8.*"
+
   > "dotnet add package Microsoft.EntityFrameworkCore.Sqlite --version 8.*"
 
 ## 🧪 Como Rodar o Projeto
 
 - Clone o repositório
 - Execute os comandos:
-  > dotnet restore
-  > dotnet ef database update
-  > dotnet run
-- Teste via Swagger
+  > "dotnet restore"
+
+  > "dotnet ef database update"
+
+  > "dotnet run"
 
 ## 🛠️ Melhorias Futuras
 
