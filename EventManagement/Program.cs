@@ -23,10 +23,9 @@ if (app.Environment.IsDevelopment())
 }
 
 app.EventRoutes();
-
 app.UseHttpsRedirection();
 
-// Razor pages
+// Razor pages (não implementado ainda)
 app.UseStaticFiles();
 app.UseRouting();
 app.UseAuthorization();
