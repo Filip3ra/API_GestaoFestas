@@ -5,12 +5,13 @@ O foco foi mais no backend, mas futuramente pretendo adicionar um frontend tamb�
 
 ## ✨ Funcionalidades
 
-- Cadastro de **eventos**, incluindo contratante, data, preço e serviços prestados.
-- Cadastro de **funcionários**.
-- Associação de funcionários a eventos.
-- Visualização de funcionários associados a eventos e vice-versa.
-- Remoção de associação entre funcionário e evento.
-- Integração com **Swagger** para testes da API.
+- Cadastro de **eventos**, incluindo contratante, data, preço e serviços prestados;
+- Cadastro de **funcionários**;
+- Associação de funcionários a eventos;
+- Visualização de funcionários associados a eventos e vice-versa;
+- Remoção de associação entre funcionário e evento;
+- Integração com **Swagger** para testes da API;
+- Sistema de autenticação.
 
 ## 💻 Tecnologias Utilizadas
 
@@ -48,7 +49,6 @@ E dentro da pasta do projeto é precio adicionar os pacotes:
 
 ## 🛠️ Melhorias Futuras
 
-- Tela para cadastro e edição de eventos via Razor;
+- Telas/frontend para login, cadastros, etc;
 - Validação de campos;
-- Sistema de autenticação;
 - Deploy em nuvem;
