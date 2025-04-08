@@ -9,6 +9,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<EventContext>(); //injeta no container, minha conexão com bd
 
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

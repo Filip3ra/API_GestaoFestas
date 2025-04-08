@@ -4,6 +4,11 @@ using Event.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Http.HttpResults;
 
+
+
+
+
+
 namespace Event.Routes;
 
 public static class EventRoute
@@ -20,6 +25,9 @@ public static class EventRoute
   */
   public static void EventRoutes(this WebApplication app)
   {
+
+
+    //----------------------------------------EVENT----------------------------------------
 
     var route = app.MapGroup("event");
 
@@ -108,10 +116,10 @@ public static class EventRoute
       }
 
       // Só altera se o valor foi passado na requisição
-        if (!string.IsNullOrWhiteSpace(req.Name))
-        {
-          event_.ChangeContractingName(req.Name);
-        }
+      if (!string.IsNullOrWhiteSpace(req.Name))
+      {
+        event_.ChangeContractingName(req.Name);
+      }
 
       // Se Price foi fornecido, altera
       if (req.Price.HasValue)
@@ -286,7 +294,7 @@ public static class EventRoute
       return Results.Ok(employee_);
     })
       .WithTags("Funcionário");
-    
+
     // Soft Delete 
     routeEmployee.MapDelete("{id:guid}/soft", async (Guid id, EventContext context) =>
     {
