@@ -6,8 +6,7 @@ a API(requisições do usuário) e o modelo de domínio (EventModel)
 > Separar a estrutura da API da estrutura do banco é uma boa prática.
 */
 
-using Employee.Models;
-namespace Event.Models;
+namespace Event.Request;
 
 public record EventRequest(
   string? Name,
@@ -20,3 +19,6 @@ public record EventRequest(
 public record EmployeeRequest(
   string Name
 );
+
+public record LoginRequest(string Username, string Password);
+public record UserUpdateRequest(string? Username, string? Password);
