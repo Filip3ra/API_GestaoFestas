@@ -25,7 +25,7 @@ public class EventModel
 
   public Guid Id { get; init; }
 
-  public string Contracting { get; private set; }
+  public string? Contracting { get; private set; }
 
   public decimal Price { get; set; }
 

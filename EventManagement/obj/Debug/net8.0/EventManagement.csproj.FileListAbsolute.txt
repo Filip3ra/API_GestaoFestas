@@ -257,8 +257,6 @@ C:\Users\filip\OneDrive\Documentos\DOTNET\API_GestaoFestas\API_GestaoFestas\Even
 C:\Users\filip\OneDrive\Documentos\DOTNET\API_GestaoFestas\API_GestaoFestas\EventManagement\obj\Debug\net8.0\EventManagement.csproj.CoreCompileInputs.cache
 C:\Users\filip\OneDrive\Documentos\DOTNET\API_GestaoFestas\API_GestaoFestas\EventManagement\obj\Debug\net8.0\EventManagement.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\filip\OneDrive\Documentos\DOTNET\API_GestaoFestas\API_GestaoFestas\EventManagement\obj\Debug\net8.0\EventManagement.MvcApplicationPartsAssemblyInfo.cache
-C:\Users\filip\OneDrive\Documentos\DOTNET\API_GestaoFestas\API_GestaoFestas\EventManagement\obj\Debug\net8.0\EventManagement.RazorAssemblyInfo.cache
-C:\Users\filip\OneDrive\Documentos\DOTNET\API_GestaoFestas\API_GestaoFestas\EventManagement\obj\Debug\net8.0\EventManagement.RazorAssemblyInfo.cs
 C:\Users\filip\OneDrive\Documentos\DOTNET\API_GestaoFestas\API_GestaoFestas\EventManagement\obj\Debug\net8.0\EventManagement.sourcelink.json
 C:\Users\filip\OneDrive\Documentos\DOTNET\API_GestaoFestas\API_GestaoFestas\EventManagement\obj\Debug\net8.0\staticwebassets.build.json
 C:\Users\filip\OneDrive\Documentos\DOTNET\API_GestaoFestas\API_GestaoFestas\EventManagement\obj\Debug\net8.0\staticwebassets.development.json
