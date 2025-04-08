@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "OF5LCwcpfC6TlC5V86dsaH/7q1M/BKfW1j0nhpeFygw=",
+  "Hash": "p1qo51YivTpTttq0ZDDMROGMpXp/IvgXA9D0aIZxXOc=",
   "Source": "EventManagement",
   "BasePath": "_content/EventManagement",
   "Mode": "Default",
@@ -10,7 +10,7 @@
     {
       "Name": "EventManagement\\wwwroot",
       "Source": "EventManagement",
-      "ContentRoot": "C:\\Users\\filip\\OneDrive\\Documentos\\DOTNET\\API_GestaoFestas\\EventManagement\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\filip\\OneDrive\\Documentos\\DOTNET\\API_GestaoFestas\\API_GestaoFestas\\EventManagement\\wwwroot\\",
       "BasePath": "_content/EventManagement",
       "Pattern": "**"
     }

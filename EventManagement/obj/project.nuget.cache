@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "cb4uUobOlIs=",
+  "dgSpecHash": "VVESssenNG0=",
   "success": true,
-  "projectFilePath": "C:\\Users\\filip\\OneDrive\\Documentos\\DOTNET\\API_GestaoFestas\\EventManagement\\EventManagement.csproj",
+  "projectFilePath": "C:\\Users\\filip\\OneDrive\\Documentos\\DOTNET\\API_GestaoFestas\\API_GestaoFestas\\EventManagement\\EventManagement.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\filip\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\filip\\.nuget\\packages\\microsoft.aspnetcore.openapi\\8.0.14\\microsoft.aspnetcore.openapi.8.0.14.nupkg.sha512",

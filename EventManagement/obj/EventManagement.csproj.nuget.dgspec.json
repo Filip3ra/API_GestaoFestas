@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\filip\\OneDrive\\Documentos\\DOTNET\\API_GestaoFestas\\EventManagement\\EventManagement.csproj": {}
+    "C:\\Users\\filip\\OneDrive\\Documentos\\DOTNET\\API_GestaoFestas\\API_GestaoFestas\\EventManagement\\EventManagement.csproj": {}
   },
   "projects": {
-    "C:\\Users\\filip\\OneDrive\\Documentos\\DOTNET\\API_GestaoFestas\\EventManagement\\EventManagement.csproj": {
+    "C:\\Users\\filip\\OneDrive\\Documentos\\DOTNET\\API_GestaoFestas\\API_GestaoFestas\\EventManagement\\EventManagement.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\filip\\OneDrive\\Documentos\\DOTNET\\API_GestaoFestas\\EventManagement\\EventManagement.csproj",
+        "projectUniqueName": "C:\\Users\\filip\\OneDrive\\Documentos\\DOTNET\\API_GestaoFestas\\API_GestaoFestas\\EventManagement\\EventManagement.csproj",
         "projectName": "EventManagement",
-        "projectPath": "C:\\Users\\filip\\OneDrive\\Documentos\\DOTNET\\API_GestaoFestas\\EventManagement\\EventManagement.csproj",
+        "projectPath": "C:\\Users\\filip\\OneDrive\\Documentos\\DOTNET\\API_GestaoFestas\\API_GestaoFestas\\EventManagement\\EventManagement.csproj",
         "packagesPath": "C:\\Users\\filip\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\filip\\OneDrive\\Documentos\\DOTNET\\API_GestaoFestas\\EventManagement\\obj\\",
+        "outputPath": "C:\\Users\\filip\\OneDrive\\Documentos\\DOTNET\\API_GestaoFestas\\API_GestaoFestas\\EventManagement\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\filip\\AppData\\Roaming\\NuGet\\NuGet.Config"
