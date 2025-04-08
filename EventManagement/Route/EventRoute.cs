@@ -50,7 +50,8 @@ public static class EventRoute
         await context.AddAsync(event_); // Adiciona esse evento no context
         await context.SaveChangesAsync(); // Commit para adicionar de fato no banco de dados
         return Results.Ok($"O evento da {event_.Contracting} foi cadastrado com sucesso.");
-      });
+      })
+      .WithTags("Eventos");
 
     // Get dos eventos com funcionários alocados para os eventos
     route.MapGet("", async (EventContext context) =>
@@ -58,7 +59,8 @@ public static class EventRoute
       // Include : inclui os funcionários cadastrados no evento
       var events_ = await context.Events.Include(e => e.Employees).ToListAsync();
       return Results.Ok(events_);
-    });
+    })
+      .WithTags("Eventos");
 
     // Edita evento 
     /*route.MapPut("{id:guid}", async (Guid id, EventRequest req, EventContext context) =>
@@ -131,7 +133,8 @@ public static class EventRoute
 
       await context.SaveChangesAsync();
       return Results.Ok(event_);
-    });
+    })
+      .WithTags("Eventos");
 
     // Soft Delete
     route.MapDelete("{id:guid}/soft", async (Guid id, EventContext context) =>
@@ -147,7 +150,8 @@ public static class EventRoute
       await context.SaveChangesAsync();
       return Results.Ok(event_);
 
-    });
+    })
+      .WithTags("Eventos");
 
     // Hard Delete 
     route.MapDelete("{id:guid}/hard", async (Guid id, EventContext context) =>
@@ -170,7 +174,8 @@ public static class EventRoute
       await context.SaveChangesAsync();
 
       return Results.Ok($"Evento {id} removido com sucesso.");
-    });
+    })
+      .WithTags("Eventos");
 
     // Remove funcionário de um evento
     route.MapDelete("{eventId:guid}/employee/{employeeId:guid}", async (Guid eventId, Guid employeeId, EventContext context) =>
@@ -196,7 +201,8 @@ public static class EventRoute
       event_.Employees.Remove(employee);
       await context.SaveChangesAsync();
       return Results.Ok($"Funcionário {employee.Name} foi removido do evento {event_.Contracting} com sucesso.");
-    });
+    })
+      .WithTags("Eventos");
 
     //----------------------------------------EMPLOYEE----------------------------------------
 
@@ -223,14 +229,16 @@ public static class EventRoute
       await context.AddAsync(employee_);
       await context.SaveChangesAsync();
       return Results.Ok(employee_);
-    });
+    })
+      .WithTags("Funcionário");
 
     // Get todos os funcionários
     routeEmployee.MapGet("", async (EventContext context) =>
     {
       var employees_ = await context.EmployeeModel.ToListAsync();
       return Results.Ok(employees_);
-    });
+    })
+      .WithTags("Funcionário");
 
     // Get eventos de um funcionário
     routeEmployee.MapGet("{id:guid}/events", async (Guid id, EventContext context) =>
@@ -245,7 +253,8 @@ public static class EventRoute
       }
 
       return Results.Ok(employee.Events);
-    });
+    })
+      .WithTags("Funcionário");
 
     // Edita nome funcionário (não pode ter mesmo nome que outro já cadastrado)
     routeEmployee.MapPut("{id:guid}", async (Guid id, EmployeeRequest req, EventContext context) =>
@@ -275,7 +284,8 @@ public static class EventRoute
       employeeToUpdate.ChangeEmployeeName(req.Name);
       await context.SaveChangesAsync();
       return Results.Ok(employee_);
-    });
+    })
+      .WithTags("Funcionário");
     
     // Soft Delete 
     routeEmployee.MapDelete("{id:guid}/soft", async (Guid id, EventContext context) =>
@@ -290,7 +300,8 @@ public static class EventRoute
       employee_.SetInactive();
       await context.SaveChangesAsync();
       return Results.Ok($"Funcionário(a) {employee_.Name} INATIVADO com sucesso.");
-    });
+    })
+      .WithTags("Funcionário");
 
     // Hard Delete 
     routeEmployee.MapDelete("{id:guid}/hard", async (Guid id, EventContext context) =>
@@ -305,7 +316,7 @@ public static class EventRoute
       context.EmployeeModel.Remove(employee_); // Remove funcionário
       await context.SaveChangesAsync();
       return Results.Ok($"Funcionário(a) {employee_.Name} REMOVIDO com sucesso.");
-    });
-
+    })
+      .WithTags("Funcionário");
   }
 }
