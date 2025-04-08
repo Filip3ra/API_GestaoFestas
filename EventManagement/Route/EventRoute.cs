@@ -3,6 +3,7 @@ using Event.Models;
 using Event.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Http.HttpResults;
+using Microsoft.AspNetCore.Authorization;
 
 
 
@@ -62,7 +63,7 @@ public static class EventRoute
       .WithTags("Eventos");
 
     // Get dos eventos com funcionários alocados para os eventos
-    route.MapGet("", async (EventContext context) =>
+    route.MapGet("", [Authorize] async (EventContext context) =>
     {
       // Include : inclui os funcionários cadastrados no evento
       var events_ = await context.Events.Include(e => e.Employees).ToListAsync();
