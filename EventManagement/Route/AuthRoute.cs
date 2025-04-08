@@ -14,8 +14,7 @@ public static class AuthRoute
 {
   public static void AuthEndpoints(this WebApplication app)
   {
-
-
+    // Login no sistema
     app.MapPost("/login", ([FromBody] LoginRequest request, EventContext context, IConfiguration config) =>
     {
       var user = context.Users.FirstOrDefault(u => u.Username == request.Username);
@@ -30,6 +29,7 @@ public static class AuthRoute
     })
     .WithTags("Login");
 
+    // Registra usuário
     app.MapPost("/register", ([FromBody] LoginRequest request, EventContext context) =>
     {
       if (context.Users.Any(u => u.Username == request.Username))
@@ -48,6 +48,7 @@ public static class AuthRoute
     })
     .WithTags("Login");
 
+    // Remove usuário
     app.MapDelete("/user/{id:guid}", [Microsoft.AspNetCore.Authorization.Authorize] async (Guid id, EventContext context) =>
     {
       var user = await context.Users.FindAsync(id);
@@ -64,6 +65,7 @@ public static class AuthRoute
     })
     .WithTags("Login");
 
+    // Lista todos os usuários cadastrados
     app.MapGet("/List", [Microsoft.AspNetCore.Authorization.Authorize] async (EventContext context) =>
     {
       var users = await context.Users.ToListAsync();
@@ -71,8 +73,8 @@ public static class AuthRoute
     })
     .WithTags("Login");
 
-
-  app.MapPatch("{id:guid}", [Microsoft.AspNetCore.Authorization.Authorize] async (Guid id, [FromBody] UserUpdateRequest req, EventContext context) =>
+    // Edita usuário
+    app.MapPatch("{id:guid}", [Microsoft.AspNetCore.Authorization.Authorize] async (Guid id, [FromBody] UserUpdateRequest req, EventContext context) =>
   {
       var user = await context.Users.FindAsync(id);
       if (user == null)

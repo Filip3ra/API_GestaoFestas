@@ -1,14 +1,10 @@
 using Event.Data;
 using Event.Routes;
-
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Auth.Routes;
-
 using Microsoft.OpenApi.Models;
-
-
 
 var builder = WebApplication.CreateBuilder(args);
 

@@ -8,6 +8,7 @@ a API(requisições do usuário) e o modelo de domínio (EventModel)
 
 namespace Event.Request;
 
+// ------------------ Eventos --------------------------------
 public record EventRequest(
   string? Name,
   decimal? Price,
@@ -16,9 +17,11 @@ public record EventRequest(
   List<Guid>? EmployeesId
 );
 
+// ------------------ Funcionários ----------------------------
 public record EmployeeRequest(
   string Name
 );
 
+// ------------------ Autenticação / Usuário ------------------
 public record LoginRequest(string Username, string Password);
 public record UserUpdateRequest(string? Username, string? Password);

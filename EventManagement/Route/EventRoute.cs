@@ -22,10 +22,8 @@ public static class EventRoute
   */
   public static void EventRoutes(this WebApplication app)
   {
-
-
     //----------------------------------------EVENT----------------------------------------
-
+    
     var route = app.MapGroup("event");
 
     route.MapPost("", async (EventRequest req, EventContext context) =>
@@ -66,23 +64,6 @@ public static class EventRoute
       return Results.Ok(events_);
     })
       .WithTags("Eventos");
-
-    // Edita evento 
-    /*route.MapPut("{id:guid}", async (Guid id, EventRequest req, EventContext context) =>
-    {
-      //var event_ = await context.Events.FindAsync(id);
-      var event_ = await context.Events.FirstOrDefaultAsync(event_ => event_.Id == id);
-
-      if (event_ == null)
-      {
-        return Results.NotFound();
-      }
-
-      event_.ChangeContractingName(req.Name);
-      await context.SaveChangesAsync();
-      return Results.Ok(event_);
-
-    });*/
 
     // Edita atributos do evento
     route.MapPatch("", async (Guid id, EventRequest req, EventContext context) =>
