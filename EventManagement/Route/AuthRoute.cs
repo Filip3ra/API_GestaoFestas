@@ -7,6 +7,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using Event.Request;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Auth.Routes;
 
@@ -15,7 +16,7 @@ public static class AuthRoute
   public static void AuthEndpoints(this WebApplication app)
   {
     // Login no sistema
-    app.MapPost("/login", ([FromBody] LoginRequest request, EventContext context, IConfiguration config) =>
+    app.MapPost("/login", (LoginRequest request, EventContext context, IConfiguration config) =>
     {
       var user = context.Users.FirstOrDefault(u => u.Username == request.Username);
 
@@ -30,7 +31,7 @@ public static class AuthRoute
     .WithTags("Login");
 
     // Registra usuário
-    app.MapPost("/register", ([FromBody] LoginRequest request, EventContext context) =>
+    app.MapPost("/register", [Authorize] async (LoginRequest request, EventContext context) =>
     {
       if (context.Users.Any(u => u.Username == request.Username))
         return Results.BadRequest("Usuário já existe");
@@ -49,7 +50,7 @@ public static class AuthRoute
     .WithTags("Login");
 
     // Remove usuário
-    app.MapDelete("/user/{id:guid}", [Microsoft.AspNetCore.Authorization.Authorize] async (Guid id, EventContext context) =>
+    app.MapDelete("/user/{id:guid}", [Authorize] async (Guid id, EventContext context) =>
     {
       var user = await context.Users.FindAsync(id);
 
@@ -66,7 +67,7 @@ public static class AuthRoute
     .WithTags("Login");
 
     // Lista todos os usuários cadastrados
-    app.MapGet("/List", [Microsoft.AspNetCore.Authorization.Authorize] async (EventContext context) =>
+    app.MapGet("/List", [Authorize] async (EventContext context) =>
     {
       var users = await context.Users.ToListAsync();
       return Results.Ok(users);
@@ -74,53 +75,53 @@ public static class AuthRoute
     .WithTags("Login");
 
     // Edita usuário
-    app.MapPatch("{id:guid}", [Microsoft.AspNetCore.Authorization.Authorize] async (Guid id, [FromBody] UserUpdateRequest req, EventContext context) =>
-  {
-      var user = await context.Users.FindAsync(id);
-      if (user == null)
-          return Results.NotFound("Usuário não encontrado.");
+    app.MapPatch("{id:guid}", [Authorize] async (Guid id, UserUpdateRequest req, EventContext context) =>
+    {
+        var user = await context.Users.FindAsync(id);
+        if (user == null)
+            return Results.NotFound("Usuário não encontrado.");
 
-      // Verifica se o novo nome de usuário está em uso por outro usuário
-      if (!string.IsNullOrWhiteSpace(req.Username))
-      {
-          bool usernameTaken = context.Users.Any(u => u.Username == req.Username && u.Id != id);
-          if (usernameTaken)
-              return Results.BadRequest("Nome de usuário já está em uso.");
+        // Verifica se o novo nome de usuário está em uso por outro usuário
+        if (!string.IsNullOrWhiteSpace(req.Username))
+        {
+            bool usernameTaken = context.Users.Any(u => u.Username == req.Username && u.Id != id);
+            if (usernameTaken)
+                return Results.BadRequest("Nome de usuário já está em uso.");
 
-          user.Username = req.Username;
-      }
+            user.Username = req.Username;
+        }
 
-      if (!string.IsNullOrWhiteSpace(req.Password))
-      {
-          user.PasswordHash = BCrypt.Net.BCrypt.HashPassword(req.Password);
-      }
+        if (!string.IsNullOrWhiteSpace(req.Password))
+        {
+            user.PasswordHash = BCrypt.Net.BCrypt.HashPassword(req.Password);
+        }
 
-      await context.SaveChangesAsync();
-      return Results.Ok("Usuário atualizado com sucesso.");
-  })
-  .WithTags("Login");
+        await context.SaveChangesAsync();
+        return Results.Ok("Usuário atualizado com sucesso.");
+    })
+    .WithTags("Login");
 
 
   }
 
-private static string GenerateJwtToken(UserModel user, IConfiguration configuration)
-{
-    var secret = configuration["JwtSettings:SecretKey"];
-    var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secret)); // guarde no appsettings
-    var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+  private static string GenerateJwtToken(UserModel user, IConfiguration configuration)
+  {
+      var secret = configuration["JwtSettings:SecretKey"];
+      var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secret)); // guarde no appsettings
+      var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
 
-    var claims = new[]
-    {
-        new Claim(ClaimTypes.Name, user.Username),
-        new Claim(ClaimTypes.NameIdentifier, user.Id.ToString())
-    };
+      var claims = new[]
+      {
+          new Claim(ClaimTypes.Name, user.Username),
+          new Claim(ClaimTypes.NameIdentifier, user.Id.ToString())
+      };
 
-    var token = new JwtSecurityToken(
-        claims: claims,
-        expires: DateTime.UtcNow.AddHours(2),
-        signingCredentials: creds);
+      var token = new JwtSecurityToken(
+          claims: claims,
+          expires: DateTime.UtcNow.AddHours(2),
+          signingCredentials: creds);
 
-    return new JwtSecurityTokenHandler().WriteToken(token);
-}
+      return new JwtSecurityTokenHandler().WriteToken(token);
+  }
 
 }

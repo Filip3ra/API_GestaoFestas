@@ -26,7 +26,7 @@ public static class EventRoute
     
     var route = app.MapGroup("event");
 
-    route.MapPost("", async (EventRequest req, EventContext context) =>
+    route.MapPost("", [Authorize] async (EventRequest req, EventContext context) =>
       {
         List<EmployeeModel> listEmployees = new List<EmployeeModel>();
 
@@ -66,7 +66,7 @@ public static class EventRoute
       .WithTags("Eventos");
 
     // Edita atributos do evento
-    route.MapPatch("", async (Guid id, EventRequest req, EventContext context) =>
+    route.MapPatch("", [Authorize] async (Guid id, EventRequest req, EventContext context) =>
     {
       // Verifica existânci de um evento
       var event_ = await context.Events.FirstOrDefaultAsync(e => e.Id == id);
@@ -123,7 +123,7 @@ public static class EventRoute
       .WithTags("Eventos");
 
     // Soft Delete
-    route.MapDelete("{id:guid}/soft", async (Guid id, EventContext context) =>
+    route.MapDelete("{id:guid}/soft", [Authorize] async (Guid id, EventContext context) =>
     {
       var event_ = await context.Events.FirstOrDefaultAsync(event_ => event_.Id == id);
 
@@ -140,7 +140,7 @@ public static class EventRoute
       .WithTags("Eventos");
 
     // Hard Delete 
-    route.MapDelete("{id:guid}/hard", async (Guid id, EventContext context) =>
+    route.MapDelete("{id:guid}/hard", [Authorize] async (Guid id, EventContext context) =>
     {
       //var event_ = await context.Events.FirstOrDefaultAsync(event_ => event_.Id == id);
 
@@ -164,7 +164,7 @@ public static class EventRoute
       .WithTags("Eventos");
 
     // Remove funcionário de um evento
-    route.MapDelete("{eventId:guid}/employee/{employeeId:guid}", async (Guid eventId, Guid employeeId, EventContext context) =>
+    route.MapDelete("{eventId:guid}/employee/{employeeId:guid}", [Authorize] async (Guid eventId, Guid employeeId, EventContext context) =>
     {
       // Buscar o evento e incluir a lista de funcionários 
       var event_ = await context.Events
@@ -195,7 +195,7 @@ public static class EventRoute
     var routeEmployee = app.MapGroup("employee");
 
     // Post de funcionários
-    routeEmployee.MapPost("", async (EmployeeRequest req, EventContext context) =>
+    routeEmployee.MapPost("", [Authorize] async (EmployeeRequest req, EventContext context) =>
     {
       // Busca no banco todos que atendem a pelo menos uma das condições
       var listEmployees = await context.EmployeeModel
@@ -219,7 +219,7 @@ public static class EventRoute
       .WithTags("Funcionário");
 
     // Get todos os funcionários
-    routeEmployee.MapGet("", async (EventContext context) =>
+    routeEmployee.MapGet("", [Authorize] async (EventContext context) =>
     {
       var employees_ = await context.EmployeeModel.ToListAsync();
       return Results.Ok(employees_);
@@ -227,7 +227,7 @@ public static class EventRoute
       .WithTags("Funcionário");
 
     // Get eventos de um funcionário
-    routeEmployee.MapGet("{id:guid}/events", async (Guid id, EventContext context) =>
+    routeEmployee.MapGet("{id:guid}/events", [Authorize] async (Guid id, EventContext context) =>
     {
       var employee = await context.EmployeeModel
       .Include(e => e.Events)
@@ -243,7 +243,7 @@ public static class EventRoute
       .WithTags("Funcionário");
 
     // Edita nome funcionário (não pode ter mesmo nome que outro já cadastrado)
-    routeEmployee.MapPut("{id:guid}", async (Guid id, EmployeeRequest req, EventContext context) =>
+    routeEmployee.MapPut("{id:guid}", [Authorize] async (Guid id, EmployeeRequest req, EventContext context) =>
     {
       // Busca no banco todos que atendem a pelo menos uma das condições
       var employee_ = await context.EmployeeModel
@@ -274,7 +274,7 @@ public static class EventRoute
       .WithTags("Funcionário");
 
     // Soft Delete 
-    routeEmployee.MapDelete("{id:guid}/soft", async (Guid id, EventContext context) =>
+    routeEmployee.MapDelete("{id:guid}/soft", [Authorize] async (Guid id, EventContext context) =>
     {
       var employee_ = await context.EmployeeModel.FirstOrDefaultAsync(event_ => event_.Id == id);
 
@@ -290,7 +290,7 @@ public static class EventRoute
       .WithTags("Funcionário");
 
     // Hard Delete 
-    routeEmployee.MapDelete("{id:guid}/hard", async (Guid id, EventContext context) =>
+    routeEmployee.MapDelete("{id:guid}/hard", [Authorize] async (Guid id, EventContext context) =>
     {
       var employee_ = await context.EmployeeModel.FirstOrDefaultAsync(event_ => event_.Id == id);
 
