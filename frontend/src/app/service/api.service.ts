@@ -18,12 +18,8 @@ export class ApiService {
     return this.http.post(`${this.apiUrl}/register`, data);
   }
 
-  getEventos(token: string): Observable<any> {
-    return this.http.get(`${this.apiUrl}/event`, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
+  getAllEvents(): Observable<any> {
+    return this.http.get(`${this.apiUrl}/event`);
   }
 
   // outros métodos para eventos, funcionários etc.

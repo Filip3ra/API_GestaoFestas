@@ -1,0 +1,30 @@
+<h2>Eventos</h2>
+
+<button (click)="listarEventos()">
+  {{ mostrarEventos ? 'Ocultar Eventos' : 'Mostrar Eventos'}}
+</button>
+
+<ul *ngIf="mostrarEventos">
+  <li *ngFor="let evento of eventos">
+    <strong>Contratante:</strong> {{ evento.contracting }}<br />
+    <strong>Data:</strong> {{ evento.date | date:'short' }}<br />
+    <strong>Preço:</strong> R$ {{ evento.price }}<br />
+    <strong>Serviços:</strong>
+    <ul>
+      <li *ngFor="let servico of evento.services">
+        {{ servico }}
+      </li>
+    </ul>
+
+    <strong>Funcionários:</strong>
+    <ul>
+      <li *ngFor="let funcionario of evento.employees">
+        {{ funcionario.name }}
+      </li>
+    </ul>
+
+    <hr />
+  </li>
+</ul>
+
+<button routerLink="/dashboard">Voltar</button>

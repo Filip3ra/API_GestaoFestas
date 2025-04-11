@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ApiService } from '../../service/api.service'; // ajuste o caminho se necessário
+import { ApiService } from '../../service/api.service';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 

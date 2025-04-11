@@ -35,9 +35,6 @@ builder.Services.AddCors(options =>
             .AllowAnyMethod());
 });
 
-
-
-
 // Add services to the container.
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -70,8 +67,6 @@ builder.Services.AddSwaggerGen(options =>
         { jwtSecurityScheme, Array.Empty<string>() }
     });
 });
-
-
 
 var app = builder.Build();
 
