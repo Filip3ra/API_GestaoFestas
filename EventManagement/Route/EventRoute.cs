@@ -192,7 +192,7 @@ public static class EventRoute
 
     //----------------------------------------EMPLOYEE----------------------------------------
 
-    var routeEmployee = app.MapGroup("employee");
+    var routeEmployee = app.MapGroup("/employee");
 
     // Post de funcionários
     routeEmployee.MapPost("", [Authorize] async (EmployeeRequest req, EventContext context) =>
@@ -226,7 +226,7 @@ public static class EventRoute
     })
       .WithTags("Funcionário");
 
-    // Get eventos de um funcionário
+    // Get eventos de um funcionário com ID (NÃO UTILIZADO)
     routeEmployee.MapGet("{id:guid}/events", [Authorize] async (Guid id, EventContext context) =>
     {
       var employee = await context.EmployeeModel
@@ -241,6 +241,18 @@ public static class EventRoute
       return Results.Ok(employee.Events);
     })
       .WithTags("Funcionário");
+
+    // Get funcionário e eventos sem ID
+    routeEmployee.MapGet("with-events", [Authorize] async (EventContext context) =>
+    {
+      var employees = await context.EmployeeModel
+        .Include(e => e.Events)
+        .ToListAsync();
+
+    return Results.Ok(employees);
+    })
+      .WithTags("Funcionário");
+   
 
     // Edita nome funcionário (não pode ter mesmo nome que outro já cadastrado)
     routeEmployee.MapPut("{id:guid}", [Authorize] async (Guid id, EmployeeRequest req, EventContext context) =>

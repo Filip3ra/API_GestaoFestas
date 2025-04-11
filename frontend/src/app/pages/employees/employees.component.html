@@ -1,3 +1,42 @@
-<p>employees works!</p>
+<p>Employees</p>
+
+<button (click)="listarFuncionarios()">
+  {{ mostrarFuncionarios ? 'Ocultar Funcionários' : 'Mostrar Funcionários' }}
+</button>
+
+<ng-container *ngIf="mostrarFuncionarios">
+  <div *ngFor="let funcionario of employees">
+    <strong>Nome:</strong> {{ funcionario.name }}<br />
+
+    <button (click)="carregarEventos(funcionario)">
+      {{ funcionario.events ? 'Ocultar Eventos Escalados' : 'Eventos Escalados' }}
+    </button>
+
+    <!-- Eventos carregados -->
+    <ng-container *ngIf="funcionario.events">
+      <div *ngIf="funcionario.events.length > 0; else nenhumEvento">
+        <ul>
+          <li *ngFor="let evento of funcionario.events">
+            <strong>Evento:</strong> {{ evento.contracting }}<br />
+            <strong>Data:</strong> {{ evento.date | date:'short' }}<br />
+            <strong>Serviços:</strong>
+            <ul>
+              <li *ngFor="let servico of evento.services">
+                {{ servico }}
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </ng-container>
+
+    <hr />
+  </div>
+
+  <!-- Template de fallback -->
+  <ng-template #nenhumEvento>
+    <p><em>Nenhum evento escalado para este funcionário.</em></p>
+  </ng-template>
+</ng-container>
 
 <button routerLink="/dashboard">Voltar</button>

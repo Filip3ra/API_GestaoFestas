@@ -18,9 +18,9 @@ export class EventsComponent {
   constructor(private api: ApiService) { }
 
   listarEventos() {
-    if (this.eventos.length === 0) { 
+    if (this.eventos.length === 0) { // verifica se a lista de eventos está vazia
       this.api.getAllEvents().subscribe({
-        next: (res) => {
+        next: (res) => { // Se a requisição deu certo, armazena res em eventos
           this.eventos = res,
             this.mostrarEventos = true;
         },

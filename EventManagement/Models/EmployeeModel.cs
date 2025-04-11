@@ -15,7 +15,7 @@ public class EmployeeModel
   public Guid Id { get; init; }
   public string Name { get; private set; }
 
-  [JsonIgnore]
+  [JsonIgnore] // Pra evitar circular reference no JSON
   public List<EventModel> Events { get; set; } = new();
   public void ChangeEmployeeName(string name)
   {

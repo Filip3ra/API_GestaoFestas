@@ -22,5 +22,14 @@ export class ApiService {
     return this.http.get(`${this.apiUrl}/event`);
   }
 
+  getAllEmployees(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/employee`);
+  }
+  
+  getEventsByEmployeeId(id: string): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/employee/${id}/events`);
+  }
+  
+
   // outros métodos para eventos, funcionários etc.
 }
