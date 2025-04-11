@@ -240,19 +240,7 @@ public static class EventRoute
 
       return Results.Ok(employee.Events);
     })
-      .WithTags("Funcionário");
-
-    // Get funcionário e eventos sem ID
-    routeEmployee.MapGet("with-events", [Authorize] async (EventContext context) =>
-    {
-      var employees = await context.EmployeeModel
-        .Include(e => e.Events)
-        .ToListAsync();
-
-    return Results.Ok(employees);
-    })
-      .WithTags("Funcionário");
-   
+      .WithTags("Funcionário");   
 
     // Edita nome funcionário (não pode ter mesmo nome que outro já cadastrado)
     routeEmployee.MapPut("{id:guid}", [Authorize] async (Guid id, EmployeeRequest req, EventContext context) =>
