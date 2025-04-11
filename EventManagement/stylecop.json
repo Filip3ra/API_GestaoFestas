@@ -1,0 +1,30 @@
+{
+  "settings": {
+    "documentationRules": {
+      "companyName": "SeuNomeOuEmpresa",
+      "documentInternalElements": false,
+      "documentPrivateElements": false,
+      "fileNamingConvention": "metadata",
+      "xmlHeader": false
+    },
+    "orderingRules": {
+      "usingDirectivesPlacement": "outsideNamespace",
+      "systemUsingDirectivesFirst": true,
+      "blankLinesBetweenUsingGroups": "require"
+    },
+    "namingRules": {
+      "allowCommonHungarianPrefixes": false,
+      "includeInferredTupleElementNames": true,
+      "allowedNamespaceComponents": ["*"],
+      "allowedHungarianPrefixes": [],
+      "allowUnderscoreInIdentifiers": false
+    },
+    "indentation": {
+      "useTabs": false,
+      "indentationSize": 4
+    },
+    "layoutRules": {
+      "newlineAtEndOfFile": "require"
+    }
+  }
+}
