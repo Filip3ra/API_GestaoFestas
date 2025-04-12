@@ -16,12 +16,8 @@ export class LoginComponent {
 
   constructor(private api: ApiService, private router: Router) {}
 
-  login() {
-    console.log('Enviando login:', this.username, this.password); // 👀 debug
-
-    this.api
-      .login({ username: this.username, password: this.password })
-      .subscribe({
+  login() {    
+    this.api.login({ username: this.username, password: this.password }).subscribe({
         next: (res) => {
           localStorage.setItem('token', res.token);
           alert('Login realizado com sucesso!');

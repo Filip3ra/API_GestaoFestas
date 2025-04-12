@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class ApiService {
-  private apiUrl = 'http://localhost:5029'; // ajuste para sua porta do .NET
+  private apiUrl = 'http://localhost:5029';
 
   constructor(private http: HttpClient) {}
 

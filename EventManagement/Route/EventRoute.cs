@@ -226,7 +226,7 @@ public static class EventRoute
     })
       .WithTags("Funcionário");
 
-    // Get eventos de um funcionário com ID (NÃO UTILIZADO)
+    // Get eventos de um funcionário com ID
     routeEmployee.MapGet("{id:guid}/events", [Authorize] async (Guid id, EventContext context) =>
     {
       var employee = await context.EmployeeModel
