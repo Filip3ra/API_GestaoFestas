@@ -16,7 +16,9 @@ export class LoginComponent {
 
   constructor(private api: ApiService, private router: Router) {}
 
-  login() {    
+  login() {
+    //console.log('Enviando login:', this.username, this.password);
+
     this.api.login({ username: this.username, password: this.password }).subscribe({
         next: (res) => {
           localStorage.setItem('token', res.token);
