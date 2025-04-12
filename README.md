@@ -21,6 +21,7 @@ O foco foi mais no backend, mas futuramente pretendo adicionar um frontend tamb�
 - SQLite
 - Swagger
 
+<!--
 ## 🗂️ Pacotes Necessários do Projeto
 
 Ao criar o arquico EventContext.cs é preciso instalar e adicionar pacotes:
@@ -34,7 +35,7 @@ E dentro da pasta do projeto é precio adicionar os pacotes:
 > "dotnet add package Microsoft.EntityFrameworkCore.Design --version 8.\*"
 
 > "dotnet add package Microsoft.EntityFrameworkCore.Sqlite --version 8.\*"
-
+-->
 ## 🧪 Como Rodar o Projeto
 
 - Clone o repositório;
@@ -47,8 +48,14 @@ E dentro da pasta do projeto é precio adicionar os pacotes:
 
   > "dotnet run"
 
+- Navega até o diretório do frontend:
+
+  > "ng serve"
+
+- Será gerado um link localhost, só abrir no navegador e testar.
+
 ## 🛠️ Melhorias Futuras
 
-- Telas/frontend para login, cadastros, etc;
-- Validação de campos;
+- Telas/frontend estilizadas;
+- Remoção de token por inatividade do usuário;
 - Deploy em nuvem;
