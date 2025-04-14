@@ -3,7 +3,7 @@
 Este é um projeto em .NET 8 que implementa um sistema de gestão de festas usando **Minimal API**, **Entity Framework Core (SQLite)**.
 O foco foi mais no backend, mas futuramente pretendo adicionar um frontend também.
 
-Documentação disponícel [aqui.](https://www.notion.so/Sistema-de-Gest-o-de-Eventos-1d0709aa41a2806a97f3ed0a7359311d?pvs=4) 
+Documentação disponível [aqui.](https://www.notion.so/Sistema-de-Gest-o-de-Eventos-1d0709aa41a2806a97f3ed0a7359311d?pvs=4) 
 
 ## ✨ Funcionalidades
 
