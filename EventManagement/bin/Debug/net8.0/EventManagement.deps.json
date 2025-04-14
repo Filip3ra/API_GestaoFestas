@@ -14,7 +14,6 @@
           "Microsoft.EntityFrameworkCore": "8.0.10",
           "Microsoft.EntityFrameworkCore.Design": "8.0.10",
           "Microsoft.EntityFrameworkCore.Sqlite": "8.0.10",
-          "StyleCop.Analyzers": "1.1.118",
           "Swashbuckle.AspNetCore": "6.6.2",
           "System.IdentityModel.Tokens.Jwt": "8.8.0"
         },
@@ -691,7 +690,6 @@
           }
         }
       },
-      "StyleCop.Analyzers/1.1.118": {},
       "Swashbuckle.AspNetCore/6.6.2": {
         "dependencies": {
           "Microsoft.Extensions.ApiDescription.Server": "6.0.5",
@@ -1130,13 +1128,6 @@
       "sha512": "sha512-PQ2Oq3yepLY4P7ll145P3xtx2bX8xF4PzaKPRpw9jZlKvfe4LE/saAV82inND9usn1XRpmxXk7Lal3MTI+6CNg==",
       "path": "sqlitepclraw.provider.e_sqlite3/2.1.6",
       "hashPath": "sqlitepclraw.provider.e_sqlite3.2.1.6.nupkg.sha512"
-    },
-    "StyleCop.Analyzers/1.1.118": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-Onx6ovGSqXSK07n/0eM3ZusiNdB6cIlJdabQhWGgJp3Vooy9AaLS/tigeybOJAobqbtggTamoWndz72JscZBvw==",
-      "path": "stylecop.analyzers/1.1.118",
-      "hashPath": "stylecop.analyzers.1.1.118.nupkg.sha512"
     },
     "Swashbuckle.AspNetCore/6.6.2": {
       "type": "package",
